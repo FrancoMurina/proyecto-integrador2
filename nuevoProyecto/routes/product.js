@@ -1,0 +1,8 @@
+const express = require('express');
+const router = express.Router();
+const productController = require('../controller/productController');
+
+// router.get ('/hola', productController. despues seguimos)
+
+
+module.exports = router;
