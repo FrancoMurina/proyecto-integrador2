@@ -26,8 +26,16 @@ lista: [
     id:4
     },
 
-]
+],
 
+usuarios: [
+    { 
+    nombre: "Franco Murina",
+    upDatedAt: "2020-03-03",
+    edad: 18,
+
+    }
+]
 
 }
 
