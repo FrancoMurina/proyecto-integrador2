@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <!-- Include Head -->
 <%- include('./partials/head.ejs') %>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -12,6 +13,7 @@
 <body>
 	<!-- Header -->
 	<%- include('./partials/header.ejs') %>
+	
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -20,26 +22,24 @@
 			<div class="col-12">
 				<h2 class="products-title">Registrate</h2>
 			</div>
-			<!-- Show the "ultimos" products -->
-			<!-- <h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de registro. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2> -->
+
+	<!-- Formulario -->
 			<form>
+				 <!-- form-group - username -->
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 					 </div>
-					<input name="" class="form-control" placeholder="Full name" type="text">
-				</div> <!-- form-group// -->
+					<input name="" class="form-control" placeholder="Username" type="text">
+				</div> 
+				<!-- form-group - email -->
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 					 </div>
 					<input name="" class="form-control" placeholder="Email address" type="email">
-				</div> <!-- form-group// -->
+				</div> 
+				<!-- form-group - phone numer -->
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -51,33 +51,33 @@
 						<option value="3">+701</option>
 					</select>
 					<input name="" class="form-control" placeholder="Phone number" type="text">
-				</div> <!-- form-group// -->
+				</div> 
+				<!-- form-group - birth -->
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="fa fa-building"></i> </span>
 					</div>
-					<select class="form-control">
-						<option selected=""> Select job type</option>
-						<option>Designer</option>
-						<option>Manager</option>
-						<option>Accaunting</option>
-					</select>
-				</div> <!-- form-group end.// -->
+					<input name="" class="form-control" placeholder="Date of Birth" type="text">
+				</div> 
+				<!-- form-group - password-->
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 					</div>
 					<input class="form-control" placeholder="Create password" type="password">
-				</div> <!-- form-group// -->
+				</div> 
+				<!-- form-group - password-->
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 					</div>
 					<input class="form-control" placeholder="Repeat password" type="password">
-				</div> <!-- form-group// -->                                      
+				</div> 
+				<!-- form-group// -->                                      
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
-				</div> <!-- form-group// -->      
+				</div> 
+				<!-- form-group// -->      
 				<p class="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
 			</form>
 
