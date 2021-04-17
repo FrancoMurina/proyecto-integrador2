@@ -1,12 +1,13 @@
 const productos = require('../data/datos');
 
 const searchResultsController ={
-search:function(req,res){
+
+    search:function(req,res){
     let listaProductos = productos.lista;
-return res.render('search-results.ejs',{
-    title: "Search",
-      
-})
-}
+    return res.render('search-results.ejs',{
+        title: "Search",    
+        })
+    }
 };
+
 module.exports = searchResultsController;
