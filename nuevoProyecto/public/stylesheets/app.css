@@ -68,7 +68,13 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  /* background-color: var(--yellow); */
+  background-color: black;
+}
+
+.logo{
+  height: 70px;
+  width: 100px;
 }
 
 .main-header_home-link,
@@ -80,12 +86,14 @@ hr {
   font-size: 1.5em;
   margin-top: 20px;
   text-align: center;
+  color: white;
 }
 
 .search-form {
   position: relative;
   display: flex;
   align-items: center;
+  color: white;
 }
 
 .search-form_input {
@@ -110,6 +118,7 @@ hr {
 }
 
 
+
 /*====== Main Navbar ======*/
 .btn-toggle-navbar {
   background-color: var(--dark-blue);
@@ -125,11 +134,13 @@ hr {
 .main-navbar {
   margin-top: 20px;
   display: none;
+  color: white;
 }
 
 .left-navbar,
 .right-navbar {
   font-size: 1.5em;
+  color: white;
 }
 
 .logout{
@@ -137,6 +148,7 @@ hr {
   border: 0px;
   cursor: pointer;
   font-size: 1em;
+  color: white;
 }
 
 .logout:hover{
@@ -259,9 +271,11 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
+  background-color:black;
   padding: 20px 0;
   margin-top: 80px;
+
+
 }
 
 .footer-data {
@@ -269,18 +283,18 @@ hr {
 }
 
 .footer-data i {
-  color: var(--light-blue);
+  color: white;;
   font-size: 3.5em;
 }
 
 .footer-data h2 {
-  color: var(--gray);
+  color: white;
   font-size: 2.4em;
   font-weight: 400;
 }
 
 .footer-data p {
-  color: var(--gray);
+  color: white;
   font-size: 1.5em;
   font-weight: 300;
 }
@@ -292,7 +306,7 @@ hr {
 
 .sub-footer p {
   margin: 0;
-  color: var(--gray);
+  color: white;
   padding: 15px 0;
 }
 
@@ -485,7 +499,11 @@ textarea.form-input {
   }
 
   .banner {
-    height: 320px;
+    height: 350px;
+  }
+
+  .medidasBanner {
+    height: 350px;
   }
 
   .btn-toggle-navbar {
