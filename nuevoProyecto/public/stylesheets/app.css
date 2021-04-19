@@ -73,8 +73,9 @@ hr {
 }
 
 .logo{
-  height: 70px;
-  width: 100px;
+  height: 60px;
+  width: 150px;
+
 }
 
 .main-header_home-link,
@@ -383,7 +384,7 @@ hr {
 }
 
 .buy-now-button {
-  background-color: var(--light-blue);
+  background-color: black;
   font-size: 1.6em;
   color: #ffffff;
   padding: 15px;
@@ -485,7 +486,7 @@ textarea.form-input {
 }
 
 .btn{
-  background-color: #1259c3;
+  background-color:black;
   padding: 10px 20px;
   border-radius: 4px;
   color: #fff;
