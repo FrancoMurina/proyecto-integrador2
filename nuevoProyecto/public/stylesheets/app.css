@@ -468,6 +468,14 @@ textarea.form-input {
   padding: 15px;
 }
 
+.formularioRegistro {
+  margin-left: 500px;
+}
+
+.formularioProducto {
+  margin-left: 500px;
+}
+
 
 /*====== Profile ======*/
 .info-usuario{
