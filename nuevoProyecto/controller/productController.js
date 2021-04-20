@@ -5,7 +5,7 @@ const productController = {
     todosLosProductos: function(req,res){
         let listaProductos = productos.lista;  
         return res.render('product',{
-            title: "Todos los productos de noe",
+            title: "Todos los productos",
             listaProducts: listaProductos,
             })
     },
@@ -13,7 +13,7 @@ const productController = {
         let listaProductos = productos.lista;
         return res.render('product-add',{
             title: "Detalle de un producto",
-            listaProductos: listaProductos,
+            listaProducts: listaProductos,
             })
     }
 };

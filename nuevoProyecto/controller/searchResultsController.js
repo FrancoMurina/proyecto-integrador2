@@ -6,7 +6,8 @@ const searchResultsController ={
     let listaProductos = productos.lista;
     return res.render('search-results.ejs',{
         title: "Search",    
-        })
+    listaProducts: listaProductos,
+    })
     }
 };
 
