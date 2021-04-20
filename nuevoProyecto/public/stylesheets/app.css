@@ -72,11 +72,11 @@ hr {
   background-color: black;
 }
 
-.logo{
+/*== .logo{
   height: 60px;
   width: 150px;
 
-}
+} ==*/
 
 .main-header_home-link,
 .main-header_credit-link {
@@ -87,7 +87,7 @@ hr {
   font-size: 1.5em;
   margin-top: 20px;
   text-align: center;
-  color: white;
+  color: white   !important;  
 }
 
 .search-form {
@@ -468,13 +468,13 @@ textarea.form-input {
   padding: 15px;
 }
 
-.formularioRegistro {
+/*== .formularioRegistro {
   margin-left: 500px;
-}
+} ==*/
 
-.formularioProducto {
+/*== .formularioProducto {
   margin-left: 500px;
-}
+} ==*/
 
 
 /*====== Profile ======*/

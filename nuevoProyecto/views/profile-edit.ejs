@@ -3,6 +3,12 @@
 <!-- Include Head -->
 
 <%- include('./partials/head.ejs') %>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 <body>
 	<!-- Header -->
@@ -16,13 +22,73 @@
 				<h2 class="products-title">Editar mi perfil</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de edición de datos del perfil de usuario. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos deñ usuario<br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2>
-
+			
+<div class="container h-100">
+	<div class="d-flex justify-content-center h-100">
+		<div class="user_card">
+			<div class="d-flex justify-content-center">
+			</div>
+			<div class="d-flex justify-content-center form_container">
+		<form class="formularioRegistro">
+			 <!-- form-group - username -->
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+				 </div>
+				<input name="" class="form-control" placeholder="Change username" type="text">
+			</div> 
+			<!-- form-group - email -->
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+				 </div>
+				<input name="" class="form-control" placeholder="Change email address" type="email">
+			</div> 
+			<!-- form-group - phone numer -->
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+				</div>
+				<select class="custom-select" style="max-width: 120px;">
+					<option selected="">+971</option>
+					<option value="1">+972</option>
+					<option value="2">+198</option>
+					<option value="3">+701</option>
+				</select>
+				<input name="" class="form-control" placeholder="Change phone number" type="text">
+			</div> 
+			<!-- form-group - birth -->
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"> <i class="fa fa-building"></i> </span>
+				</div>
+				<input name="" class="form-control" placeholder=" Change Date of Birth" type="text">
+			</div> 
+			<!-- form-group - password-->
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+				</div>
+				<input class="form-control" placeholder="Change password" type="password">
+			</div> 
+			<!-- form-group - password-->
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+				</div>
+				<input class="form-control" placeholder="Repeat password" type="password">
+			</div> 
+			<!-- form-group// -->                                      
+			<div class="form-group">
+				<a href="/users"><button type="button" class="btn btn-primary btn-block"> Edit Account  </button></a>
+			
+				
+			</div>                                                                
+		</form>
+		</div>
+	</div>
+</div>
+</div>
 
 	<!-- footer -->
 	<%- include('./partials/footer.ejs') %>
