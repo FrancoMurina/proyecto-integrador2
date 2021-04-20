@@ -29,7 +29,7 @@
 			<div class="d-flex justify-content-center">
 			</div>
 			<div class="d-flex justify-content-center form_container">
-		<form class="formularioRegistro">
+		<form class="formularioRegistro" action="/users" method="GET">
 			 <!-- form-group - username -->
 			<div class="form-group input-group">
 				<div class="input-group-prepend">
@@ -79,11 +79,11 @@
 				<input class="form-control" placeholder="Repeat password" type="password">
 			</div> 
 			<!-- form-group// -->                                      
-			<div class="form-group">
-				<a href="/users"><button type="button" class="btn btn-primary btn-block"> Edit Account  </button></a>
-			
-				
-			</div>                                                                
+			<div class="d-flex justify-content-center mt-3 login_container">
+
+				<button type="submit" class="btn login_btn">Edit account</button>
+		
+	   </div>                                                               
 		</form>
 		</div>
 	</div>

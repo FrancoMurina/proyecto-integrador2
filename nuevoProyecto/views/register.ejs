@@ -30,7 +30,7 @@
 				<div class="d-flex justify-content-center">
 				</div>
 				<div class="d-flex justify-content-center form_container">
-			<form class="formularioRegistro">
+			<form class="formularioRegistro" action="/users" method="GET">
 				 <!-- form-group - username -->
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
@@ -63,7 +63,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="fa fa-building"></i> </span>
 					</div>
-					<input name="" class="form-control" placeholder="Date of Birth" type="text">
+					<input name="" class="form-control" placeholder="Date of birth" type="text">
 				</div> 
 				<!-- form-group - password-->
 				<div class="form-group input-group">
@@ -80,11 +80,11 @@
 					<input class="form-control" placeholder="Repeat password" type="password">
 				</div> 
 				<!-- form-group// -->                                      
-				<div class="form-group">
-					<a href="/users"><button type="button" class="btn btn-primary btn-block"> Create Account</button></a>
-				
-					
-				</div> 
+				<div class="d-flex justify-content-center mt-3 login_container">
+
+				<button type="submit" class="btn login_btn" >Create account</button>
+			
+		   </div> 
 				<!-- form-group// -->      
 				<p class="text-center">Have an account? <a href="/account/login">Log In</a> </p>                                                                 
 			</form>
