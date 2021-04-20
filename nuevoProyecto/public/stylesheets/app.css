@@ -69,7 +69,8 @@ hr {
 .main-header {
   padding: 15px 0;
   /* background-color: var(--yellow); */
-  background-color: black;
+  background: black;
+  /*==linear-gradient(black, rgba(44, 44, 44, 0)); ==*/
 }
 
 /*== .logo{
@@ -284,10 +285,9 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color:black;
+  background: black;
   padding: 20px 0;
   margin-top: 80px;
-
 
 }
 
