@@ -161,6 +161,11 @@ hr {
   display: block;
   padding: 5px 0;
   border-bottom: solid 1px var(--gray);
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+.main-header_credit-link{
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
@@ -185,6 +190,13 @@ hr {
   font-size: 2.4em;
   font-weight: 400;
   color: var(--gray);
+  font-family: 'Times New Roman', Times, serif;
+}
+.products-t{
+  font-size: 2.4em;
+  font-weight: 400;
+  color: var(--gray);
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .product-box {
@@ -298,6 +310,7 @@ hr {
   color: white;
   font-size: 1.5em;
   font-weight: 300;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .sub-footer {
@@ -310,7 +323,6 @@ hr {
   color: white;
   padding: 15px 0;
 }
-
 
 /*====== Product Detail ======*/
 .product-detail {
