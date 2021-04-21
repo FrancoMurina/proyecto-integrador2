@@ -2,17 +2,23 @@ const productos = require('../data/datos');
 
 const productController = {
 
-    todosLosProductos: function(req,res){
+    detalleDeLosProductos: function(req,res){
         let listaProductos = productos.lista;  
+        let resultado =[];
+        for(let i=0; i<listaProductos.length; i++){
+            if(req.params.id == listaProductos[i].id){
+                resultado.push(listaProductos[i])
+            }
+        }
         return res.render('product',{
-            title: "Todos los productos",
-            listaProducts: listaProductos,
+            title: "Detalle de un producto",
+            listaProducts: resultado,
             })
     },
-    detalleDeLosProductos: function(req,res){
+    agregarProductos: function(req,res){
         let listaProductos = productos.lista;
         return res.render('product-add',{
-            title: "Detalle de un producto",
+            title: "Agregar un producto",
             listaProducts: listaProductos,
             })
     }
