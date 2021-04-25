@@ -22,77 +22,76 @@
 				<h2 class="products-t">Edit my profile</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			
-<div class="container h-100">
-	<div class="d-flex justify-content-center h-100">
-		<div class="user_card">
-			<div class="d-flex justify-content-center">
+	
+	<!-- Formulario -->
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form class="formularioRegistro" action="/users" method="GET">
+						<!-- Username -->
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+							</div>
+							<input name="" class="form-control" placeholder="Change username" type="text">
+						</div> 
+						<!-- Email -->
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+							</div>
+							<input name="" class="form-control" placeholder="Change email address" type="email">
+						</div> 
+						<!-- PhoneNumber -->
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+							</div>
+							<select class="custom-select" style="max-width: 120px;">
+								<option selected="">+971</option>
+								<option value="1">+972</option>
+								<option value="2">+198</option>
+								<option value="3">+701</option>
+							</select>
+							<input name="" class="form-control" placeholder="Change phone number" type="text">
+						</div> 
+						<!-- Date of Birth -->
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa fa-building"></i> </span>
+							</div>
+							<input name="" class="form-control" placeholder=" Change Date of Birth" type="text">
+						</div> 
+						<!-- Password-->
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+							</div>
+							<input class="form-control" placeholder="Change password" type="password">
+						</div> 
+						<!-- Password-->
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+							</div>
+							<input class="form-control" placeholder="Repeat password" type="password">
+						</div> 
+						<!-- Boton edit account -->                                      
+						<div class="d-flex justify-content-center mt-3 login_container">
+							<button type="submit" class="btn login_btn">Edit account</button>
+						</div>                                                               
+					</form>
+				</div>
 			</div>
-			<div class="d-flex justify-content-center form_container">
-		<form class="formularioRegistro" action="/users" method="GET">
-			 <!-- form-group - username -->
-			<div class="form-group input-group">
-				<div class="input-group-prepend">
-					<span class="input-group-text"> <i class="fa fa-user"></i> </span>
-				 </div>
-				<input name="" class="form-control" placeholder="Change username" type="text">
-			</div> 
-			<!-- form-group - email -->
-			<div class="form-group input-group">
-				<div class="input-group-prepend">
-					<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-				 </div>
-				<input name="" class="form-control" placeholder="Change email address" type="email">
-			</div> 
-			<!-- form-group - phone numer -->
-			<div class="form-group input-group">
-				<div class="input-group-prepend">
-					<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-				</div>
-				<select class="custom-select" style="max-width: 120px;">
-					<option selected="">+971</option>
-					<option value="1">+972</option>
-					<option value="2">+198</option>
-					<option value="3">+701</option>
-				</select>
-				<input name="" class="form-control" placeholder="Change phone number" type="text">
-			</div> 
-			<!-- form-group - birth -->
-			<div class="form-group input-group">
-				<div class="input-group-prepend">
-					<span class="input-group-text"> <i class="fa fa-building"></i> </span>
-				</div>
-				<input name="" class="form-control" placeholder=" Change Date of Birth" type="text">
-			</div> 
-			<!-- form-group - password-->
-			<div class="form-group input-group">
-				<div class="input-group-prepend">
-					<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-				</div>
-				<input class="form-control" placeholder="Change password" type="password">
-			</div> 
-			<!-- form-group - password-->
-			<div class="form-group input-group">
-				<div class="input-group-prepend">
-					<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-				</div>
-				<input class="form-control" placeholder="Repeat password" type="password">
-			</div> 
-			<!-- form-group// -->                                      
-			<div class="d-flex justify-content-center mt-3 login_container">
-
-				<button type="submit" class="btn login_btn">Edit account</button>
-		
-	   </div>                                                               
-		</form>
 		</div>
 	</div>
-</div>
-</div>
 
-	<!-- footer -->
-	<%- include('./partials/footer.ejs') %>
-	<!-- /footer -->
+<!-- footer -->
+<%- include('./partials/footer.ejs') %>
+<!-- /footer -->
 </body>
 
 </html>

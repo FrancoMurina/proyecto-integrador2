@@ -28,42 +28,40 @@
 	<div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
-				<div class="d-flex justify-content-center">
+				<div class="d-flex justify-content-center"></div>
+					<div class="d-flex justify-content-center form_container">
+						<form class="formularioProducto" action="/users" method="GET">
+							<!-- Product name -->
+							<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+								</div>
+								<input name="" class="form-control" placeholder="Product name" type="text">
+							</div> 
+							<!-- Product image -->
+							<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+								</div>
+								<input name="" class="form-control" placeholder="Product image" type="email">
+							</div> 
+							<!-- Created at-->
+							<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-building"></i> </span>
+								</div>
+								<input name="" class="form-control" placeholder="Created at" type="text">
+							</div>         
+							<!-- Boton Add Product -->                                      
+							<div class="d-flex justify-content-center mt-3 login_container">
+								<button type="submit" class="btn login_btn" >Add product</button>
+							</div>                                                       
+						</form>
+					</div>
 				</div>
-				<div class="d-flex justify-content-center form_container">
-	<form class="formularioProducto" action="/users" method="GET">
-		<!-- form-group - product name -->
-		<div class="form-group input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text"> <i class="fa fa-user"></i> </span>
-			 </div>
-			<input name="" class="form-control" placeholder="Product name" type="text">
-		</div> 
-		<!-- form-group - product image -->
-		<div class="form-group input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-			 </div>
-			<input name="" class="form-control" placeholder="Product image" type="email">
-		</div> 
-		<!-- form-group - created at-->
-		<div class="form-group input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text"> <i class="fa fa-building"></i> </span>
-			</div>
-			<input name="" class="form-control" placeholder="Created at" type="text">
-		</div>         
-		<!-- form-group// -->                                      
-		<div class="d-flex justify-content-center mt-3 login_container">
-
-			<button type="submit" class="btn login_btn" >Add product</button>
-	
-   </div>                                                       
-	</form>
 			</div>
 		</div>
 	</div>
-</div>
 
 	<!-- footer -->
 	<%- include('./partials/footer.ejs') %>
