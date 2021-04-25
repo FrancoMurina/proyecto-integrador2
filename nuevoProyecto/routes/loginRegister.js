@@ -1,6 +1,5 @@
-var express = require('express');
-var router = express.Router();
-
+const express = require('express');
+const router = express.Router();
 const loginRegisterController = require('../controller/loginRegisterController');
 
 router.get('/login', loginRegisterController.login);
