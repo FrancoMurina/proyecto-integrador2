@@ -1,5 +1,10 @@
 const productos = require('../data/datos');
 
+const { Sequelize } = require('../database/models');
+const db = require('../database/models') // Requerimos la conexion a la base de datos y todos los modelos.
+const op = db.Sequelize.Op
+
+
 const productController = {
 
     detalleDeLosProductos: function(req,res){
@@ -21,7 +26,36 @@ const productController = {
             title: "Agregar un producto",
             listaProducts: listaProductos,
             })
-    }
+    },
+    create: function(req,res){
+        db.Products.findAll()
+        .then(data =>{
+            return res.render('product-add', {users:data})
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    },
+    store: function(req,res){
+        
+        let data = req.body;
+
+        let products = {
+            userId: data.userId,
+            productName: data.productName,
+            img: data.img,
+            createdAt: data.createdAt,
+
+        };
+        db.Products.create(products)
+        .then((productCreado)=>{
+            return res.redirect('/users');
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    },
+
 };
 
 

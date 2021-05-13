@@ -30,28 +30,35 @@
 			<div class="user_card">
 				<div class="d-flex justify-content-center"></div>
 					<div class="d-flex justify-content-center form_container">
-						<form class="formularioProducto" action="/users" method="GET">
+						<form class="formularioProducto" action="/product/add" method="POST">
+							<!-- User id -->
+							<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+								</div>
+								<input name="userId" class="form-control" placeholder="User id" type="text" value="">
+							</div> 
 							<!-- Product name -->
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 								</div>
-								<input name="" class="form-control" placeholder="Product name" type="text">
+								<input name="productName" class="form-control" placeholder="Product name" type="text" value="">
 							</div> 
 							<!-- Product image -->
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 								</div>
-								<input name="" class="form-control" placeholder="Product image" type="email">
+								<input name="img" class="form-control" placeholder="Product image" type="text" value="">
 							</div> 
 							<!-- Created at-->
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-building"></i> </span>
 								</div>
-								<input name="" class="form-control" placeholder="Created at" type="text">
-							</div>         
+								<input name="createdAt" class="form-control" placeholder="Created at" type="date" value="">
+							</div>          
 							<!-- Boton Add Product -->                                      
 							<div class="d-flex justify-content-center mt-3 login_container">
 								<button type="submit" class="btn login_btn" >Add product</button>

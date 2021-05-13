@@ -30,20 +30,20 @@
 				<div class="d-flex justify-content-center">
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form class="formularioRegistro" action="/users" method="GET">
+					<form class="formularioRegistro" action="/account/register" method="POST"> 
 						<!-- Username -->
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 							</div>
-							<input name="" class="form-control" placeholder="Username" type="text">
+							<input name="username" class="form-control" placeholder="Username" type="text" value="">
 						</div> 
 						<!-- Email -->
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 							</div>
-							<input name="" class="form-control" placeholder="Email address" type="email">
+							<input name="email" class="form-control" placeholder="Email address" type="email" value="">
 						</div> 
 						<!-- Phone number -->
 						<div class="form-group input-group">
@@ -56,28 +56,28 @@
 								<option value="2">+198</option>
 								<option value="3">+701</option>
 							</select>
-							<input name="" class="form-control" placeholder="Phone number" type="text">
+							<input name="phoneNumber" class="form-control" placeholder="Phone number" type="number" value="">
 						</div> 
 						<!-- Date of birth -->
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa fa-building"></i> </span>
 							</div>
-							<input name="" class="form-control" placeholder="Date of birth" type="text">
+							<input name="dateOfBirth" class="form-control" placeholder="Date of birth" type="date" value="">
 						</div> 
 						<!-- Password-->
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 							</div>
-							<input class="form-control" placeholder="Create password" type="password">
+							<input name="password" class="form-control" placeholder="Create password" type="password" value="">
 						</div> 
 						<!-- Password-->
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 							</div>
-							<input class="form-control" placeholder="Repeat password" type="password">
+							<input name="chackpassword" class="form-control" placeholder="Repeat password" type="password" value="">
 						</div> 
 						<!-- Boton Create account -->                                      
 						<div class="d-flex justify-content-center mt-3 login_container">
