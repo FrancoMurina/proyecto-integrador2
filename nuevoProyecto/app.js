@@ -3,12 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const productRouter = require('./routes/product');
 const loginRegisterRouter = require('./routes/loginRegister');
 const searchResultsRouter = require('./routes/searchResults');
+const db = require('./database/models');
 
 var app = express();
 
@@ -21,6 +23,39 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'proyecto2db',
+  resave: false,
+  saveUninitialized: true,
+}
+));
+
+// Dejar disponible datos de session para todas las vistas
+app.use(function(req,res,next){
+  if(req.session.user != undefined){
+    res.locals = req.session.user;
+    console.log(res.locals);
+  }
+  return next();
+ 
+})
+//Gestionar la cookie
+app.use(function(req,res,next){
+  if(req.cookies.userId != undefined && req.session.user == undefined){
+  let idDeLaCookie = req.cookies.userId
+db.User.findByPk(idDeLaCookie)
+.then(function(user){
+  req.session.user = user;
+  req.locals =user;
+
+  return next()
+})
+.catch(function(error){
+  console.log(error)
+})
+  }else{ return next();
+  }
+})
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
