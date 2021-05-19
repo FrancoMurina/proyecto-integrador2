@@ -17,7 +17,8 @@ CREATE TABLE products (
 	userId INT UNSIGNED NOT NULL,
     productName VARCHAR (255) NOT NULL, 
     img VARCHAR (255) NOT NULL, 
-    createdAt DATE,
+    createdAt TIMESTAMP,
+    updatedAt TIMESTAMP,
     
     FOREIGN KEY (userId) REFERENCES users(id)
 );
@@ -27,7 +28,8 @@ CREATE TABLE coments (
 	productId INT UNSIGNED NOT NULL,
 	userId INT UNSIGNED NOT NULL,
     textoComentario VARCHAR(255) NOT NULL,
-    createdAt DATE,
+    createdAt TIMESTAMP,
+    updatedAt TIMESTAMP,
     
     FOREIGN KEY (userId) REFERENCES users(id),
     FOREIGN KEY (productId) REFERENCES products(id)
