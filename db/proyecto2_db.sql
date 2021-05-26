@@ -9,7 +9,9 @@ CREATE TABLE users (
     email VARCHAR(255) NOT NULL,
     phoneNumber INT UNSIGNED NOT NULL,
     dateOfBirth DATE,
-	password VARCHAR(255) NOT NULL
+	password VARCHAR(255) NOT NULL,
+    createdAt TIMESTAMP,
+    updatedAt TIMESTAMP
 );
 
 CREATE TABLE products (
