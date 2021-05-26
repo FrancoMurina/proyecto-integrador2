@@ -15,11 +15,11 @@ const loginRegisterController = {
         })
     },
     login:function(req,res){
-        db.Users.findOne({
+        db.User.findOne({
             where:[{email:req.body.email}]
         })
         .then(function(user){
-        req.session.user = user;
+            req.session.user = user;
 
             // Si tildo recordame => creamos las cookies
 
@@ -40,20 +40,20 @@ const loginRegisterController = {
             title: "Register",
         })
     },
-    create: function(req,res){
-    db.Users.findAll()
-    .then(data =>{
-        return res.render('register', {users:data})
-    })
-    .catch(error =>{
-        console.log(error);
-    })
-    },
+    // create: function(req,res){
+    // db.User.findAll()
+    // .then(data =>{
+    //     return res.render('register', {users:data})
+    // })
+    // .catch(error =>{
+    //     console.log(error);
+    // })
+    // },
     store: function(req,res){
         
         let data = req.body;
 
-        let users = {
+        let user = {
             username: data.username,
             email: data.email,
             phoneNumber: data.phoneNumber,
@@ -61,20 +61,21 @@ const loginRegisterController = {
             password: bcrypt.hashSync(data.password, 10),
             // checkPassword: bcrypt.compareSync(data.password, users), // true
             // checkPassword: bcrypt.compareSync(data.password, users.password), // false
-        };
-        db.Users.create(users)
-        .then((userCreado)=>{
+        }
+        db.User.create(user)
+        .then(function(user){
+            req.session.user = user;
             return res.redirect('/users');
         })
-        .catch(error => {
-            console.log(error);
-        })
+       
+        
+       
     },
 
 
     
     logout: function(req,res){
-        //Destruir la sesion
+                //Destruir la sesion
         req.session.destroy();
         //Destruir la cookie
         res.clearCookie('userId');

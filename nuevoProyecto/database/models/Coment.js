@@ -1,5 +1,5 @@
 module.exports = function(sequelize, dataTypes){
-    let alias = 'Products';
+    let alias = 'Coment';
 
     let cols = {
         id:{
@@ -7,25 +7,23 @@ module.exports = function(sequelize, dataTypes){
             primaryKey: true,
             type: dataTypes.INTEGER,
         },
+        produtId:{
+            type: dataTypes.INTEGER,
+        },
         userId:{
             type: dataTypes.INTEGER,
         },
-        productName:{
+        textoComentario:{
             type: dataTypes.INTEGER,
         },
-        img:{
-            type: dataTypes.INTEGER,
-        },
-       
-        
         
     };
     let config = {
-        table: 'products',
+        table: 'coments',
         timestamps: true, // Si la tabla no tiene los campos created_at y updated_at.
         underscored: false, // Si los nombres de las columna en la db tienen guiones bajos en el lugar de camelCase.
     }
-    const Products = sequelize.define(alias,cols,config);
+    const Coments = sequelize.define(alias,cols,config);
 
-    return Products;
+    return Coments;
 }

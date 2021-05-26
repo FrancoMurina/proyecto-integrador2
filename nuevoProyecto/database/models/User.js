@@ -1,6 +1,6 @@
 module.exports = function(sequelize, dataTypes){
     // Definir un alias.
-    let alias = 'Users'; // Con este alias Sequelize va a poder identificar internamente al archivo de modelo.
+    let alias = 'User'; // Con este alias Sequelize va a poder identificar internamente al archivo de modelo.
 
     // Describir la configuracion de las columnas de la tabla.
     let cols = {

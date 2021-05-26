@@ -23,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(session({
   secret: 'proyecto2db',
   resave: false,
@@ -30,32 +31,41 @@ app.use(session({
 }
 ));
 
+
 // Dejar disponible datos de session para todas las vistas
 app.use(function(req,res,next){
   if(req.session.user != undefined){
-    res.locals = req.session.user;
-    console.log(res.locals);
+    res.locals.user = req.session.user;
+    console.log(res.locals.user);
+    console.log("holaa")
+    return next();
   }
+  
   return next();
  
-})
+});
+
 //Gestionar la cookie
 app.use(function(req,res,next){
   if(req.cookies.userId != undefined && req.session.user == undefined){
   let idDeLaCookie = req.cookies.userId
-db.User.findByPk(idDeLaCookie)
-.then(function(user){
-  req.session.user = user;
-  req.locals =user;
+  db.User.findByPk(idDeLaCookie)
+    .then(function(user){
+      req.session.user = user;
+     // req.locals =user;
 
-  return next()
-})
-.catch(function(error){
-  console.log(error)
-})
-  }else{ return next();
+      return next()
+  })
+  .catch(function(error){
+    console.log(error)
+  })
+  } else{ 
+    return next();
   }
-})
+});
+
+
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

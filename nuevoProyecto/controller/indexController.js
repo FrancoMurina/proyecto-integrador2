@@ -9,7 +9,7 @@ const indexController = {
 
   indexProductos: function(req, res) {
       let id = req.params.id;
-      db.Products.findAll()
+      db.Product.findAll()
       .then(function(data){
           return res.render('index', {title: 'Express', listaProducts: data});    
     })
