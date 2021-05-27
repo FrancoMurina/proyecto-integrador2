@@ -9,7 +9,6 @@ const loginRegisterController = {
 
     // Esto es login
     index:function(req,res){
-    let listaProductos = productos.lista;
     return res.render('login.ejs',{
         title: "Login",
         })
