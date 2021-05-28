@@ -3,7 +3,8 @@ const productos = require('../data/datos');
 const bcrypt = require('bcryptjs');
 const { Sequelize } = require('../database/models');
 const db = require('../database/models') // Requerimos la conexion a la base de datos y todos los modelos.
-const op = db.Sequelize.Op
+const op = db.Sequelize.Op;
+const users = db.User;
 
 const loginRegisterController = {
 
@@ -63,7 +64,7 @@ const loginRegisterController = {
         }
         db.User.create(user)
         .then(function(user){
-            req.session.user = user;
+            // req.session.user = user;
             return res.redirect('/users');
         })
        
