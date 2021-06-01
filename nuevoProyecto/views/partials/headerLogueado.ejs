@@ -38,9 +38,9 @@
 	
 				<ul class="right-navbar">
 					<% if (locals.user){%>
-						<% console.log(locals.user) %> 
+						
 					<li>
-						<a href="/users"> <%= locals.user.username%>  <i class="fas fa-user"></i></a>
+						<a href="/users"> <%= user.email%>  <i class="fas fa-user"></i></a>
 					</li>
 					<%}%>
 					<li>

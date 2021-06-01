@@ -10,15 +10,38 @@ const loginRegisterController = {
 
     // Esto es login
     index:function(req,res){
+    // Control de acceso
+    if (req.session.user != undefined){
+        return res.redirect('/')
+    }else{
+        //Mostramos el form de login
     return res.render('login.ejs',{
         title: "Login",
         })
+    }
     },
     login:function(req,res){
         db.User.findOne({
             where:[{email:req.body.email}]
         })
         .then(function(user){
+        let errors ={};
+        // 1 Esta ese email en la base de datos?
+        if(user == null){
+            //Crear un mensaje de error
+            errors.message = "El email no existe";
+            //Pasar el mensaje a la vista
+            res.locals.errors = errors
+            //Renderizar la vista
+            return res.render('login');
+        }else if(bcrypt.compareSync(req.body.password, user.password)== false){
+            //Crear un mensaje de error
+            errors.message = "La contraseña es incorrecta";
+            //Pasar el mensaje a la vista
+            res.locals.errors = errors
+            //Renderizar la vista
+            return res.render('login');
+        }else{
             req.session.user = user;
 
             // Si tildo recordame => creamos las cookies
@@ -27,7 +50,7 @@ const loginRegisterController = {
             res.cookie('userId', user.id, { maxAge: 100 * 60 * 5})
         }
         return res.redirect('/');
-        })
+        }})
         .catch(function(error){
             console.log(error)
         })
@@ -35,10 +58,15 @@ const loginRegisterController = {
 
     // Esto es registro
     register:function(req,res){
-        let listaProductos = productos.lista;
+        // Contorl de acceso
+    if(req.session.user != undefined){
+        return res.redirect('/')
+    }else{
+    // Mostramos el form
         return res.render('register.ejs',{
             title: "Register",
         })
+    }
     },
     // create: function(req,res){
     // db.User.findAll()
@@ -50,26 +78,50 @@ const loginRegisterController = {
     // })
     // },
     store: function(req,res){
-        
         let data = req.body;
-
-        let user = {
-            username: data.username,
-            email: data.email,
-            phoneNumber: data.phoneNumber,
-            dateOfBirth: data.dateOfBirth,
-            password: bcrypt.hashSync(data.password, 10),
-            // checkPassword: bcrypt.compareSync(data.password, users), // true
-            // checkPassword: bcrypt.compareSync(data.password, users.password), // false
-        }
-        db.User.create(user)
-        .then(function(user){
-            // req.session.user = user;
-            return res.redirect('/users');
+        let errors = {}
+        // chequear que email no este vacio
+        if (req.body.email == ""){
+            errors.message = "El email es obligatorio";
+            res.locals.errors = errors;
+            return res.render('register')
+        }else if(req.body.password == ""){
+            errors.message = "El contrase;a es obligatorio";
+            res.locals.errors = errors;
+            return res.render('register')
+        }else if(req.body.checkPassword == ""){
+            errors.message = "Repeat password es obligatorio";
+            res.locals.errors = errors;
+            return res.render('register')
+            //Una vez que tenemos la informacion completa entonces podemos pasar a chequear con base de datos
+        }else{
+        db.User.findOne({
+            where:[{email:req.body.email}]
         })
-       
-        
-       
+        .then(function(user){
+        if(user != null){
+        errors.message = "el email ya esta registrado por favor elija otro.";
+        res.loclas.erros = errors;
+        return res.render('register')  
+        }else{
+            let user = {
+                username: data.username,
+                email: data.email,
+                phoneNumber: data.phoneNumber,
+                dateOfBirth: data.dateOfBirth,
+                password: bcrypt.hashSync(data.password, 10),
+                // checkPassword: bcrypt.compareSync(data.password, users), // true
+                // checkPassword: bcrypt.compareSync(data.password, users.password), // false
+            }
+            db.User.create(user)
+            .then(function(user){
+                // req.session.user = user;
+                return res.redirect('/account/login');
+            })
+        }
+    })
+    
+    }   
     },
 
 

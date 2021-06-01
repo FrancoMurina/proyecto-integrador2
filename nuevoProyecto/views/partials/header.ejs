@@ -41,6 +41,9 @@
                 <li>
                     <a href="/account/register">Create account <i class="far fa-address-card"></i></a>
                 </li>
+                 <% if(locals.user){ %> 
+                    <%= user.email %> 
+                    <% } %>  
                 <li>
                     <a href="/account/login">Login <i class="fas fa-sign-in-alt"></i></a>
                 </li>
