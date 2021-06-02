@@ -20,7 +20,9 @@
 			<div class="col-12">
 				<h2 class="products-t">Login</h2>
 			</div>
-			
+			<% if(locals.errors){ %>
+				<h2 class="products-t" style="color:red"><%=locals.errors.message  %> </h2>			
+			<% } %>
 			<!-- Formulario -->
 			<div class="container h-100">
 				<div class="d-flex justify-content-center h-100">

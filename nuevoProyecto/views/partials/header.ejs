@@ -38,15 +38,29 @@
                 <!-- solo logueado <li><a href="">Cargar productos</a></li> -->
             </ul>
             <ul class="right-navbar">
+                <% if(locals.user){ %> 
+                    <li>
+                        <a href="/product/add">Agregar producto</a>
+                    </li>
+                    <li>
+						<a href="/users"> Hola: <%= user.username%>  <i class="fas fa-user"></i></a>
+					</li> 
+                    <li>
+						<form action="/account/logout" method="post">
+							<button class="logout" type="submit">
+								Logout <i class="fas fa-sign-in-alt"></i>
+							</button>
+						</form>
+					</li>
+                    <% } else {%> 
+
                 <li>
                     <a href="/account/register">Create account <i class="far fa-address-card"></i></a>
                 </li>
-                 <% if(locals.user){ %> 
-                    <%= user.email %> 
-                    <% } %>  
                 <li>
                     <a href="/account/login">Login <i class="fas fa-sign-in-alt"></i></a>
                 </li>
+                <% } %> 
             </ul>
         </nav>
     </div>

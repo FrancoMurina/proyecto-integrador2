@@ -81,19 +81,35 @@ const loginRegisterController = {
         let data = req.body;
         let errors = {}
         // chequear que email no este vacio
-        if (req.body.email == ""){
+        if(req.body.username == ""){
+            errors.message = "El nombre es obligatorio";
+            res.locals.errors = errors;
+            return res.render('register')
+        }else if(req.body.email == ""){
             errors.message = "El email es obligatorio";
             res.locals.errors = errors;
             return res.render('register')
-        }else if(req.body.password == ""){
-            errors.message = "El contrase;a es obligatorio";
+        }else if(req.body.phoneNumber == ""){
+            errors.message = "El numero telefonico es obligatorio";
             res.locals.errors = errors;
             return res.render('register')
-        }else if(req.body.checkPassword == ""){
-            errors.message = "Repeat password es obligatorio";
+        }else if(req.body.dateOfBirth == ""){
+            errors.message = "La fecha de nacimiento es obligatoria";
+            res.locals.errors = errors;
+            return res.render('register')
+        }else if(req.body.password == ""){
+            errors.message = "El contraseña es obligatorio";
+            res.locals.errors = errors;
+            return res.render('register')
+        }else if(req.body.checkpassword == ""){
+            errors.message = "Repetir la contraseña";
             res.locals.errors = errors;
             return res.render('register')
             //Una vez que tenemos la informacion completa entonces podemos pasar a chequear con base de datos
+        }else if(req.body.checkpassword != req.body.password){
+            errors.message = "La contraseña debe ser la misma";
+            res.locals.errors = errors;
+            return res.render('register')
         }else{
         db.User.findOne({
             where:[{email:req.body.email}]
