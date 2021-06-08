@@ -11,10 +11,13 @@ const indexController = {
       let id = req.params.id;
   
       db.Product.findAll({
+        
         order:[
           ['createdAt','DESC']
         ]
-      })
+      }
+      //Aca van las associaciones
+      )
       .then(function(data){
           return res.render('index', {title: 'Express', listaProducts: data});    
     })

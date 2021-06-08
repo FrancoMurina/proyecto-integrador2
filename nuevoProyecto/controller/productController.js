@@ -54,7 +54,7 @@ const productController = {
             let products = {
                 userId: data.userId,
                 productName: data.productName,
-                img: data.img,
+                img: req.file.filename,
                 createdAt: data.createdAt,
             };
             
