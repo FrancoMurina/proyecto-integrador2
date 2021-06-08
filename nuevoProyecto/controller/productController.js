@@ -36,24 +36,37 @@ const productController = {
             console.log(error);
         })
     },
+
     store: function(req,res){
         
         let data = req.body;
 
-        let products = {
-            userId: data.userId,
-            productName: data.productName,
-            img: data.img,
-            createdAt: data.createdAt,
+        if(req.body.productname == ""){
+            errors.message = "Debe estar completo";
+            res.locals.errors = errors;
+            return res.render('/product/add')
+        } else if (req.file.mimetype !== 'image/png'&& req.file.mimetype !== 'image/jpg' && req.file.mimetype !== 'image/jpeg'){
+            errors.message = "El archivo debe ser png o jpg o jpeg";
+            res.locals.errors = errors;
+            return res.render('/product/add')
+        } else { 
 
-        };
-        db.Product.create(products)
-        .then((productCreado)=>{
-            return res.redirect('/users');
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            let products = {
+                userId: data.userId,
+                productName: data.productName,
+                img: data.img,
+                createdAt: data.createdAt,
+            };
+            
+            db.Product.create(products)
+                .then((productCreado) => {
+                    return res.redirect('/users');
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+
+        }
     },
 
 };

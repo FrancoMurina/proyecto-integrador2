@@ -98,7 +98,7 @@ const loginRegisterController = {
             res.locals.errors = errors;
             return res.render('register')
         }else if(req.body.password == ""){
-            errors.message = "El contraseña es obligatorio";
+            errors.message = "La contraseña es obligatoria";
             res.locals.errors = errors;
             return res.render('register')
         }else if(req.body.checkpassword == ""){
