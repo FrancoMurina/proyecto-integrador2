@@ -9,6 +9,7 @@ const indexController = {
 
   indexProductos: function(req, res) {
       let id = req.params.id;
+  
       db.Product.findAll({
         order:[
           ['createdAt','DESC']

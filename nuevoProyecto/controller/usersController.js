@@ -9,6 +9,7 @@ const usersController = {
 
     user: function(req,res){
         let listaProductos = productos.lista;  
+        
         return res.render('profile.ejs',{
             title: "profile",
             listaProducts: listaProductos,

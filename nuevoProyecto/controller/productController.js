@@ -28,7 +28,7 @@ const productController = {
             })
     },
     create: function(req,res){
-        db.Products.findAll()
+        db.Product.findAll()
         .then(data =>{
             return res.render('product-add', {users:data})
         })
@@ -47,7 +47,7 @@ const productController = {
             createdAt: data.createdAt,
 
         };
-        db.Products.create(products)
+        db.Product.create(products)
         .then((productCreado)=>{
             return res.redirect('/users');
         })
