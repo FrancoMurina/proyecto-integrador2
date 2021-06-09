@@ -55,9 +55,8 @@ const productController = {
                 userId: data.userId,
                 productName: data.productName,
                 img: req.file.filename,
-                createdAt: data.createdAt,
             };
-            
+
             db.Product.create(products)
                 .then((productCreado) => {
                     return res.redirect('/users');

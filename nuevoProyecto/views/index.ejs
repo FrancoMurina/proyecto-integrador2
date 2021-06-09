@@ -18,13 +18,16 @@
 			<div class="col-12">
 				<h2 class="products-title">News</h2>
 			</div>
+
+
 			<!-- Show the "ultimos" products -->
 			<% for (let i=0; i<listaProducts.length; i++){%>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
 					<a href="/product/id/<%=listaProducts[i].id%> ">
 						<figure class="product-box_image">
-							<img src="<%=listaProducts[i].img%>" alt="Zapatillas de la base de datos sin foto">
+							<img src="/images/products/<%=listaProducts[i].img%>" alt="Zapatillas de la base de datos sin foto">
+							<!-- Arreglar la foto de los productos -->
 						</figure>
 						<article class="product-box_data">
 							<h2><%=listaProducts[i].productName%></h2>

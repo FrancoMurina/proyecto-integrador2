@@ -16,8 +16,6 @@ module.exports = function(sequelize, dataTypes){
         img:{
             type: dataTypes.INTEGER,
         },
-       
-        
         
     };
     let config = {
@@ -34,7 +32,7 @@ module.exports = function(sequelize, dataTypes){
         })
         Product.hasMany(models.Coment, {
             as: "coments",
-            foreignKey: "productId" //Revisar
+            foreignKey: "productId" 
         })
     }
 
