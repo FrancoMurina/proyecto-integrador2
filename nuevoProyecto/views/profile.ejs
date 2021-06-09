@@ -18,8 +18,8 @@
 				<div class="d-flex align-items-center ">
 
 					<% if (locals.user){%>
-					<h1 class="main-title"> <%= user.username %> 
-						<a href="/users/edit">
+					<h1 class="main-title"> <%= user.username%> 
+						<a href="/users/edit/<%=user.id%>">
 						
 							<i class="fas fa-cog"></i>
 						</a>
