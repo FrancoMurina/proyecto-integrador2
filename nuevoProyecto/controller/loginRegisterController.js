@@ -123,6 +123,7 @@ const loginRegisterController = {
             let user = {
                 username: data.username,
                 email: data.email,
+                userimg: data.userimg,
                 phoneNumber: data.phoneNumber,
                 dateOfBirth: data.dateOfBirth,
                 password: bcrypt.hashSync(data.password, 10),

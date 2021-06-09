@@ -15,6 +15,9 @@ module.exports = function(sequelize, dataTypes){
         email:{
             type: dataTypes.INTEGER,
         },
+        userimg:{
+            type: dataTypes.INTEGER,
+        },
         phoneNumber:{
             type: dataTypes.DECIMAL,
         },
