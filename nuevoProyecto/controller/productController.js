@@ -55,6 +55,7 @@ const productController = {
                 userId: data.userId,
                 productName: data.productName,
                 img: req.file.filename,
+                description: data.description,
             };
 
             db.Product.create(products)

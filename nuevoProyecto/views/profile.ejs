@@ -9,15 +9,17 @@
 	<!-- Datos del usuario -->
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
+			<% if (locals.user){%>
 			<div class="img-container offset-3 col-2">
 
 				<!-- ARREGLAR PARA QUE APAREZCA LA FOTO -->
 				<img src="/images/users/<%=user.userimg%>" alt="foto de perfil" class="foto-perfil">
 			</div>
+			<p><%=user.userimg%></p>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 
-					<% if (locals.user){%>
+					
 					<h1 class="main-title"> <%= user.username%> 
 						<a href="/users/edit/<%=user.id%>">
 						

@@ -17,6 +17,7 @@ var upload = multer({storage:storage})
 
 router.get('/', usersController.user);
 router.get('/edit/:id', usersController.editUser);
+router.post('/edit', upload.single("userimg"), usersController.update);
 
 // router.get('/login', functionLogin.show );
 
