@@ -106,6 +106,10 @@ const loginRegisterController = {
             res.locals.errors = errors;
             return res.render('register')
             //Una vez que tenemos la informacion completa entonces podemos pasar a chequear con base de datos
+        }else if(req.body.password >= 3){
+            errors.message = "La contraseña debe tener al menos tres caracteres";
+            res.locals.errors = errors;
+            return res.render('register')
         }else if(req.body.checkpassword != req.body.password){
             errors.message = "La contraseña debe ser la misma";
             res.locals.errors = errors;
@@ -123,7 +127,7 @@ const loginRegisterController = {
             let user = {
                 username: data.username,
                 email: data.email,
-                userimg: data.userimg,
+                userimg: req.file.filename,
                 phoneNumber: data.phoneNumber,
                 dateOfBirth: data.dateOfBirth,
                 password: bcrypt.hashSync(data.password, 10),

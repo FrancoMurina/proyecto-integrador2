@@ -16,6 +16,9 @@ module.exports = function(sequelize, dataTypes){
         img:{
             type: dataTypes.INTEGER,
         },
+        description: {
+            type: dataTypes.INTEGER,
+        },
         
     };
     let config = {

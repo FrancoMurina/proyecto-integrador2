@@ -30,54 +30,48 @@
 				<div class="d-flex justify-content-center">
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form class="formularioRegistro" action="/users" method="GET">
+					<form class="formularioRegistro" action="/users/edit" method="POST" enctype="multipart/form-data">
 						<!-- Username -->
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 							</div>
-							<input name="" class="form-control" placeholder="Change username" type="text">
+							<input name="username" class="form-control" placeholder="Change username" type="text" value="<%= user.username%>">
+						</div> 
+						<!-- Username Photo-->
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+							</div>
+							<input name="userimg" class="form-control" placeholder="UsernamePhoto" type="file" value="" accept=".jpg, .png, .jpeg,">
 						</div> 
 						<!-- Email -->
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 							</div>
-							<input name="" class="form-control" placeholder="Change email address" type="email">
+							<input name="email" class="form-control" placeholder="Change email address" type="email" value="<%= user.email%>">
 						</div> 
 						<!-- PhoneNumber -->
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 							</div>
-							<select class="custom-select" style="max-width: 120px;">
-								<option selected="">+971</option>
-								<option value="1">+972</option>
-								<option value="2">+198</option>
-								<option value="3">+701</option>
-							</select>
-							<input name="" class="form-control" placeholder="Change phone number" type="text">
+							<input name="phoneNumber" class="form-control" placeholder="Change phone number" type="text" value="<%= user.phoneNumber%>">
 						</div> 
 						<!-- Date of Birth -->
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa fa-building"></i> </span>
 							</div>
-							<input name="" class="form-control" placeholder=" Change Date of Birth" type="text">
+							<input name="dateOfBirth" class="form-control" placeholder=" Change Date of Birth" type="date" value="<%= user.dateOfBirth%>">
 						</div> 
 						<!-- Password-->
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 							</div>
-							<input class="form-control" placeholder="Change password" type="password">
-						</div> 
-						<!-- Password-->
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-							</div>
-							<input class="form-control" placeholder="Repeat password" type="password">
+							<input name="password" class="form-control" placeholder="Change password" type="password">
 						</div> 
 						<!-- Boton edit account -->                                      
 						<div class="d-flex justify-content-center mt-3 login_container">

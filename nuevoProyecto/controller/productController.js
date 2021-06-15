@@ -20,6 +20,16 @@ const productController = {
             listaProducts: resultado,
             })
     },
+    detalleDeLosProductos: function(req,res){
+        db.Product.findByPk(req.params.id,{
+            include: [  
+            //relación comentario producto.
+            { association:'coments',
+              include:{ association: 'user'}
+            },
+           // relación producto usuario                                
+            { association: 'user' }, ] })
+    },
     agregarProductos: function(req,res){
         let listaProductos = productos.lista;
         return res.render('product-add',{
@@ -55,6 +65,7 @@ const productController = {
                 userId: data.userId,
                 productName: data.productName,
                 img: req.file.filename,
+                description: data.description,
             };
 
             db.Product.create(products)
