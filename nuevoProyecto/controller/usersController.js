@@ -21,25 +21,30 @@ const usersController = {
         //     return res.render('profile', {user: user})
         // })
         // .catch( e => {console.log(e)})
-        db.User.findByPk(req.params.id, {
+        
+        db.User.findByPk(req.params.id,  {
             include:[{
-                asssociation:'products'
+                association:'product'
             }]
+         })
+        .then((user) => {
+            console.log(user)
+            return res.render('profile', {user: user, title: "profile"})
         })
-        .then( function(user){
-            return res.render('profile', {useres: user, title: "profile"})
-        })
-        .catch( e => {console.log(e)})
+        .catch( e => console.log(e))
 
         // return res.render('profile',{
         //     title: "profile",
         //     listaProducts: listaProductos,
         //     })
+        
     },
     editUser: function(req,res){
         // let listaProductos = productos.lista;  
         let userId = req.params.id;
         
+        console.log(userId)
+        console.log(req.session.user.id)
         if(userId != req.session.user.id){
             return res.redirect(`/users/edit/${req.session.user.id}`)
         } else {
@@ -48,9 +53,7 @@ const usersController = {
                 .then( function(user){
                     return res.render('profile-edit', { profileEdit:user})
                 })
-                .catch( e => {console.log(e)})
-
-           
+                .catch( e => {console.log(e)}) 
         }
     },
     update:  function(req, res){

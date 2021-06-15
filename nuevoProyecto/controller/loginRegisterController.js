@@ -106,22 +106,27 @@ const loginRegisterController = {
             res.locals.errors = errors;
             return res.render('register')
             //Una vez que tenemos la informacion completa entonces podemos pasar a chequear con base de datos
-        }else if(req.body.password >= 3){
-            errors.message = "La contraseña debe tener al menos tres caracteres";
+        }else if(req.body.password.length <= 3){
+            errors.message = "La contraseña debe tener mas de tres caracteres";
             res.locals.errors = errors;
             return res.render('register')
         }else if(req.body.checkpassword != req.body.password){
             errors.message = "La contraseña debe ser la misma";
             res.locals.errors = errors;
             return res.render('register')
-        }else{
+        }else if(req.file == undefined){
+            errors.message = "Debe agregar una imagen";
+            res.locals.errors = errors;
+            return res.render('register')
+        }
+        else{
         db.User.findOne({
             where:[{email:req.body.email}]
         })
         .then(function(user){
         if(user != null){
         errors.message = "el email ya esta registrado por favor elija otro.";
-        res.loclas.erros = errors;
+        res.locals.errors = errors;
         return res.render('register')  
         }else{
             let user = {
