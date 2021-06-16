@@ -24,15 +24,16 @@ const productController = {
     detalleDeLosProductos: function(req,res){
         db.Product.findByPk(req.params.id,{
             include: [  
-            //relación comentario producto.
-            // { association:'coments',
-            //   include:{ association: 'user'}
-            // },
+            // relación comentario producto.
+            { association:'coments',
+              include:{ association: 'user'}
+            },
            // relación producto usuario                                
             { association: 'user' }, ] })
 
             .then(data =>{
                 // return res.send (data)
+                //return res.send(data)
                 return res.render('product', {product:data})
             })
             .catch(error =>{
@@ -89,6 +90,29 @@ const productController = {
                 })
 
         }
+    },
+    addComment:function(req,res){
+        let data = req.body;
+        // let query = location.search;
+        // let queryString = new URLSearchParams(query);
+        // let id = queryString.get("id");
+
+        // Revisar como se le manda el productId
+        let comentario = {
+            productId: req.params.id ,
+            userId:req.session.user.id,
+            textoComentario: data.textoComentario,
+        }
+
+        db.Coment.create(comentario)
+        .then(function(comentarioCreado){
+            // Revisar el nuemro del Id en la ruta
+            
+            return res.redirect(`/product/id/${req.params.id}`)
+        })
+        .catch(function(error){
+            console.log(error)
+        })
     },
 
 };

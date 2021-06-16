@@ -50,8 +50,8 @@
 						</article>
 					</section>
 					
-					<form class="form" action="" method="GET">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+					<form class="form" action="/product/comment/<%= product.id%>" method="POST">
+						<input name="textoComentario" class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">ADD COMMENT</button>
 					</form>
 					<hr>

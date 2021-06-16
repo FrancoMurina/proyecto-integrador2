@@ -20,4 +20,6 @@ router.get('/id/:id', productController.detalleDeLosProductos);
 router.get('/add', productController.create);
 router.post('/add', upload.single('img'), productController.store);
 
+router.post('/comment/:id', productController.addComment);
+
 module.exports = router;
