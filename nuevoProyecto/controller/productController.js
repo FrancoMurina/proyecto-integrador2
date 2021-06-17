@@ -33,12 +33,13 @@ const productController = {
 
             .then(data =>{
                 // return res.send (data)
-                //return res.send(data)
+                // return res.send(data)
                 return res.render('product', {product:data})
             })
             .catch(error =>{
                 console.log(error);
             })
+
     },
 
     // agregarProductos: function(req,res){
@@ -103,16 +104,16 @@ const productController = {
 
         // Revisar esto
 
-        // if(productId != req.params.id){
-        //     return res.redirect(`/product/editproduct/${req.params.id}`)
-        // } else {
-        //     //Recuperar los datos  y pasarlo al form de edición
-        //     db.Product.findByPk(productId)
-        //         .then( function(product){
-        //             return res.render('product-edit', { editProduct: product})
-        //         })
-        //         .catch( e => {console.log(e)}) 
-        // }
+        if(productId != req.params.id){
+            return res.redirect(`/product/editproduct/${req.params.id}`)
+        } else {
+            //Recuperar los datos  y pasarlo al form de edición
+            db.Product.findByPk(productId)
+                .then( function(product){
+                    return res.render('product-edit', { editProduct: product})
+                })
+                .catch( e => {console.log(e)}) 
+        }
     },
 
     updateProduct:  function(req, res){
@@ -164,7 +165,13 @@ const productController = {
         .catch(function(error){
             console.log(error)
         })
+        // db.Coment.findAll(comentario, {
+        //     order:[
+        //         ['createdAt','DESC']
+        //       ],
+        // })
     },
+    
 
 };
 
