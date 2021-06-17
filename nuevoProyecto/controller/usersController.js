@@ -60,13 +60,13 @@ const usersController = {
        let data = req.body;
         //Vamoa a actualizar un usuario
         let user ={
-            username: data.username,
+                username: data.username,
                 email: data.email,
                 userimg: '',
                 phoneNumber: data.phoneNumber,
                 dateOfBirth: data.dateOfBirth,
                 password: '',
-        }
+            }
 
         //Tenemos que pensar como completar password y avatar.
         if(req.body.password == ''){

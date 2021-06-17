@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <!-- Include Head -->
+
 <%- include('./partials/head.ejs') %>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -19,31 +19,37 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-t">Add products</h2>
+				<h2 class="products-t">Edit product</h2>
 			</div>
-			
 			<!-- Show the "ultimos" products -->
-		
+	
 	<!-- Formulario -->
 	<div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
 				<div class="d-flex justify-content-center"></div>
 					<div class="d-flex justify-content-center form_container">
-						<form class="formularioProducto" action="/product/add" method="POST" enctype="multipart/form-data">
+						<form class="formularioProducto" action="/product/editproduct" method="POST" enctype="multipart/form-data">
+							<!-- User id -->
+							<!-- <div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+								</div>
+								<input name="userId" class="form-control" placeholder="User id" type="text" value="">
+							</div>  -->
 							<!-- Product name -->
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 								</div>
-								<input name="productName" class="form-control" placeholder="Product name" type="text" value="">
+								<input name="productName" class="form-control" placeholder="Edit product name" type="text" value="">
 							</div> 
 							<!-- Product image -->
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 								</div>
-								<input name="img" class="form-control" placeholder="Product image" type="file" value="" accept=".jpg, .png, .jpeg,">
+								<input name="img" class="form-control" placeholder="Edit product image" type="file" value="" accept=".jpg, .png, .jpeg,">
 							</div>      
 							<div class="form-group input-group">
 								
@@ -51,11 +57,11 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 								</div>
-								<input name="description" class="form-control" placeholder="Description" type="text" value="">
+								<input name="description" class="form-control" placeholder="Edit description" type="text" value="">
 							</div>    
 							<!-- Boton Add Product -->                                      
 							<div class="d-flex justify-content-center mt-3 login_container">
-								<button type="submit" class="btn login_btn" >Add product</button>
+								<button type="submit" class="btn login_btn" >Edit product</button>
 							</div>                                                       
 						</form>
 					</div>
@@ -64,9 +70,9 @@
 		</div>
 	</div>
 
-	<!-- footer -->
-	<%- include('./partials/footer.ejs') %>
-	<!-- /footer -->
+<!-- footer -->
+<%- include('./partials/footer.ejs') %>
+<!-- /footer -->
 </body>
 
 </html>

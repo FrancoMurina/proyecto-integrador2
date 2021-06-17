@@ -74,7 +74,7 @@ const productController = {
         } else { 
 
             let products = {
-                userId: data.userId,
+                userId: req.session.user.id,
                 productName: data.productName,
                 img: req.file.filename,
                 description: data.description,
@@ -91,6 +91,57 @@ const productController = {
 
         }
     },
+
+    editProduct: function(req,res){
+        // let listaProductos = productos.lista;  
+        let productId = req.params.id;
+        
+        // console.log(productId)
+        // console.log(req.session.user.id)
+
+
+
+        // Revisar esto
+
+        // if(productId != req.params.id){
+        //     return res.redirect(`/product/editproduct/${req.params.id}`)
+        // } else {
+        //     //Recuperar los datos  y pasarlo al form de edición
+        //     db.Product.findByPk(productId)
+        //         .then( function(product){
+        //             return res.render('product-edit', { editProduct: product})
+        //         })
+        //         .catch( e => {console.log(e)}) 
+        // }
+    },
+
+    updateProduct:  function(req, res){
+        let data = req.body;
+         //Vamos a a actualizar un producto
+         let product = { 
+                id: req.params.id,
+                userId: req.session.user.id,
+                productName: data.productName,
+                img: req.file.filename,
+                description: data.description,
+            }
+ 
+         db.Product.update(product, {
+             where:{
+                 id: req.params.id
+             }
+         })
+             .then(function(product){
+                 //Actualizar los datos del producto y redirecciona al detalle
+                 product.id = req.params.id;
+                 req.params.id = product;
+                 return res.redirect('/');    
+             })
+             .catch( e => {console.log(e)})
+ 
+     },
+
+
     addComment:function(req,res){
         let data = req.body;
         // let query = location.search;
