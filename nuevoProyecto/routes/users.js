@@ -15,8 +15,8 @@ var storage = multer.diskStorage({
 var upload = multer({storage:storage})
 
 
-router.get('/:id', usersController.user);
 router.get('/edit/:id', usersController.editUser);
+router.get('/:id', usersController.user); //Esta ruta por ser solo un paráetro debe ser la última de las rutas por get.
 router.post('/edit', upload.single("userimg"), usersController.update);
 
 // router.get('/login', functionLogin.show );

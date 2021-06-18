@@ -13,9 +13,12 @@
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%=product.productName%></h2> 
-			<p class="product-detail-description">
-				<a href="/product/editproduct/<%= product.id%>">Edit</a>
-			</p>
+			<% if(locals.user && locals.user.id == product.user.id){ %> 
+				<p class="product-detail-description">
+					<a href="/product/editproduct/<%= product.id%>">Edit</a>
+				</p>
+			<% } %> 
+			
 		</div>
 		<div>
 			<h2 class="products-title">Publicado por: <a href="/users/<%= product.user.id%>"><%= product.user.username%>  <i class="fas fa-user"></i></a></h2>
@@ -27,8 +30,7 @@
 					<img src="/images/products/<%=product.img%>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
 						<%=product.description%>
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tae ipsam amet eum, totam dolore libero illo unde? Consectetur dolorem neque
-						veritatis.</p>
+						</p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<% for(let i=0; i<product.coments.length; i++) {%>
@@ -43,12 +45,14 @@
 						</article>
 					</section>
 					<%}%> 
-					
+					<% if(locals.user){ %> 
 					<form class="form" action="/product/comment/<%= product.id%>" method="POST">
 						<input name="textoComentario" class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">ADD COMMENT</button>
 					</form>
 					<hr>
+					<% } %> 
+				
 				</div>
 			</div>
 		</div>

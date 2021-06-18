@@ -14,7 +14,7 @@ const loginRegisterController = {
     if (req.session.user != undefined){
         return res.redirect('/')
     }else{
-        //Mostramos el form de login
+    //Mostramos el form de login
     return res.render('login.ejs',{
         title: "Login",
         })
@@ -58,7 +58,7 @@ const loginRegisterController = {
 
     // Esto es registro
     register:function(req,res){
-        // Contorl de acceso
+    // Contorl de acceso
     if(req.session.user != undefined){
         return res.redirect('/')
     }else{
@@ -68,19 +68,10 @@ const loginRegisterController = {
         })
     }
     },
-    // create: function(req,res){
-    // db.User.findAll()
-    // .then(data =>{
-    //     return res.render('register', {users:data})
-    // })
-    // .catch(error =>{
-    //     console.log(error);
-    // })
-    // },
     store: function(req,res){
         let data = req.body;
         let errors = {}
-        // chequear que email no este vacio
+        // chequear que los campos no esten vacios
         if(req.body.username == ""){
             errors.message = "El nombre es obligatorio";
             res.locals.errors = errors;
@@ -105,7 +96,6 @@ const loginRegisterController = {
             errors.message = "Repetir la contraseña";
             res.locals.errors = errors;
             return res.render('register')
-            //Una vez que tenemos la informacion completa entonces podemos pasar a chequear con base de datos
         }else if(req.body.password.length <= 3){
             errors.message = "La contraseña debe tener mas de tres caracteres";
             res.locals.errors = errors;
@@ -119,7 +109,7 @@ const loginRegisterController = {
             res.locals.errors = errors;
             return res.render('register')
         }
-        else{
+        else{//Una vez que tenemos la informacion completa entonces podemos pasar a chequear con base de datos
         db.User.findOne({
             where:[{email:req.body.email}]
         })
@@ -136,12 +126,9 @@ const loginRegisterController = {
                 phoneNumber: data.phoneNumber,
                 dateOfBirth: data.dateOfBirth,
                 password: bcrypt.hashSync(data.password, 10),
-                // checkPassword: bcrypt.compareSync(data.password, users), // true
-                // checkPassword: bcrypt.compareSync(data.password, users.password), // false
             }
             db.User.create(user)
             .then(function(user){
-                // req.session.user = user;
                 return res.redirect('/account/login');
             })
         }
@@ -153,7 +140,7 @@ const loginRegisterController = {
 
     
     logout: function(req,res){
-                //Destruir la sesion
+        //Destruir la sesion
         req.session.destroy();
         //Destruir la cookie
         res.clearCookie('userId');

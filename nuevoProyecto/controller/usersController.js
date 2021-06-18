@@ -10,41 +10,21 @@ const bcrypt = require('bcryptjs');
 const usersController = {
 
     user: function(req,res){
-        let listaProductos = productos.lista;
-        // let userId = req.params.id; 
-        // db.User.findAll ({
-        //     order:[
-        //         ['createdAt','DESC']
-        //       ]
-        // })
-        // .then( function(user){
-        //     return res.render('profile', {user: user})
-        // })
-        // .catch( e => {console.log(e)})
-        
+        let listaProductos = productos.lista; 
         db.User.findByPk(req.params.id,  {
             include:[{
                 association:'product'
             }]
          })
         .then((user) => {
-            console.log(user)
             return res.render('profile', {user: user, title: "profile"})
         })
         .catch( e => console.log(e))
-
-        // return res.render('profile',{
-        //     title: "profile",
-        //     listaProducts: listaProductos,
-        //     })
         
     },
     editUser: function(req,res){
-        // let listaProductos = productos.lista;  
-        let userId = req.params.id;
+        let userId = req.params.id; 
         
-        console.log(userId)
-        console.log(req.session.user.id)
         if(userId != req.session.user.id){
             return res.redirect(`/users/edit/${req.session.user.id}`)
         } else {
@@ -68,7 +48,7 @@ const usersController = {
                 password: '',
             }
 
-        //Tenemos que pensar como completar password y avatar.
+        //Tenemos que pensar como completar password y la imagen.
         if(req.body.password == ''){
             user.password = req.session.user.password;
         } else {
