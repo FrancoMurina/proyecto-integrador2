@@ -28,6 +28,7 @@ const indexController = {
       console.log(error);
     })
     },
+    
   indexMasComentados:function(req, res) {
     let id = req.params.id;
     db.Product.findAll({

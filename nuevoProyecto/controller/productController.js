@@ -43,7 +43,7 @@ const productController = {
         
         let data = req.body;
 
-        if(req.body.productname == ""){
+        if(req.body.productName == ""){
             errors.message = "Debe estar completo";
             res.locals.errors = errors;
             return res.render('/product/add')
@@ -76,10 +76,6 @@ const productController = {
          
         let productId = req.params.id;
         
-        
-
-
-
         // Revisar esto
         //Recuperar los datos  y pasarlo al form de edición
         db.Product.findByPk(productId)            

@@ -16,22 +16,24 @@
 				<h2 class="products-title">Search results</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<% for (let i=0; i<listaProducts.length; i++){%>
-				<div class="col-12 col-sm-6 col-lg-3">
-					<section class="product-box">
-						<a href="/product/id/<%=listaProducts[i].id%>">
-							<figure class="product-box_image">
-								<img src="<%=listaProducts[i].imagen%>" alt="cafetera moulinex">
-							</figure>
-							<article class="product-box_data">
-								<h2><%=listaProducts[i].nombre%></h2>
-								<p><%=listaProducts[i].descripcion%></p>
-								<p>Comments: <%=listaProducts[i].comentarios%></p>
-							</article>
-						</a>
-					</section>
-				</div>
-				<%}%>
+				<% for (let i=0; i<listaProducts.length; i++){%>
+					<div class="col-12 col-sm-6 col-lg-3">
+						<section class="product-box">
+							<a href="/product/id/<%=listaProducts[i].id%>">
+								<figure class="product-box_image">
+									<img src="<%=listaProducts[i].img%>" alt="foto zapatilla">
+								</figure>
+								<article class="product-box_data">
+									<h2><%=listaProducts[i].productName%></h2>
+									<p><%=listaProducts[i].descripcion%></p>
+									<p>Comments: <%=listaProducts[i].comentarios%></p>
+									<p>From: <%=listaProducts[i].username%></p>
+								</article>
+							</a>
+						</section>
+					</div>
+					<%}%>
+
 
 
 	<!-- footer -->

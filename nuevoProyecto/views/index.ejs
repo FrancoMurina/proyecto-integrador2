@@ -32,8 +32,8 @@
 						<article class="product-box_data">
 							<h2><%=listaProducts[i].productName%></h2>
 							<p><%=listaProducts[i].descripcion%></p>
-							<p>Comments: <%=listaProducts[i].comentarios%></p>
-							<p>From:</p>
+							<!-- <p>Comments: <%=listaProducts[i].comentarios%></p> -->
+							<p>From: <%=listaProducts[i].user.username%></p>
 						</article>
 					</a>
 				</section>
@@ -55,13 +55,13 @@
 					<section class="product-box">
 						<a href="/product/id/<%=listaProducts[i].id%>">
 							<figure class="product-box_image">
-								<img src="<%=listaProducts[i].img%>" alt="cafetera moulinex">
+								<img src="<%=listaProducts[i].img%>" alt="">
 							</figure>
 							<article class="product-box_data">
 								<h2><%=listaProducts[i].productName%></h2>
 								<p><%=listaProducts[i].descripcion%></p>
-								<p>Comments: <%=listaProducts[i].comentarios%></p>
-								<p>From: </p>
+								<!-- <p>Comments: <%=listaProducts[i].comentarios%></p> -->
+								<p>From: <%=listaProducts[i].username%></p>
 							</article>
 						</a>
 					</section>
