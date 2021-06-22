@@ -15,23 +15,26 @@
 			<div class="col-12">
 				<h2 class="products-title">Search results</h2>
 			</div>
+			<% if(locals.errors){ %>
+				<h2 class="products-t" style="color:red"><%=locals.errors.message  %> </h2>			
+			<% } else{ %>
 			<!-- Show the "ultimos" products -->
 				<% for (let i=0; i<listaProducts.length; i++){%>
 					<div class="col-12 col-sm-6 col-lg-3">
 						<section class="product-box">
 							<a href="/product/id/<%=listaProducts[i].id%>">
 								<figure class="product-box_image">
-									<img src="<%=listaProducts[i].img%>" alt="foto zapatilla">
+									<img src="/images/products/<%=listaProducts[i].img%>" alt="foto zapatilla">
 								</figure>
 								<article class="product-box_data">
 									<h2><%=listaProducts[i].productName%></h2>
-									<p><%=listaProducts[i].descripcion%></p>
-									<p>Comments: <%=listaProducts[i].comentarios%></p>
-									<p>From: <%=listaProducts[i].username%></p>
+									<p><%=listaProducts[i].description%></p>
+									<p>From: <%=listaProducts[i].user.username%></p>
 								</article>
 							</a>
 						</section>
 					</div>
+					<%}%>
 					<%}%>
 
 

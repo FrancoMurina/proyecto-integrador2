@@ -19,13 +19,43 @@ const searchResultsController ={
         let productSearch = req.query.search; //Obtengo la informacion de la querystring
 
         db.Product.findAll({
-            where: [
-                { productName: {[op.like]: '%'+productSearch+'%'}},
-            ]})
-            .then( data => {
-                // return res.send (data);
-                return res.render('search-results',{listaProducts: data});
+            include: [  
+                // Relación comentario producto.
+                    { association:'coments',
+                    include:{ association: 'user'}
+                    },
+               // Relación producto usuario                                
+                    { association: 'user' }],
+                    order: [['coments','id','DESC']],
+            
+            where: {
+                [op.or]:[{
+                     productName: {
+                         [op.like]: '%'+productSearch+'%'
+                        }
+                    },
+                {  
+                  description: {
+                      [op.like]: '%'+productSearch+'%'
+                    }
+            },
+        ]
+            },
             })
+            .then( data => {
+                let errors = {}
+            if (data == ''){
+                errors.message = "No existe este producto";
+                res.locals.errors = errors;
+                return res.render('search-results')
+
+            } else {
+            
+                //return res.send (data);
+                return res.render('search-results',{listaProducts: data});
+            }
+            })
+        
             .catch( error => {
                 console.log(error);
             })
