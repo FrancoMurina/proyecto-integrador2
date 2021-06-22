@@ -18,6 +18,15 @@
 					<a href="/product/editproduct/<%= product.id%>">Edit</a>
 				</p>
 			<% } %> 
+			<% if(locals.user && locals.user.id == product.user.id){ %> 
+				<!-- <p class="product-detail-description">
+					<a href="/product/delete/<%= product.id%>">Delete</a>
+				</p> -->
+				
+				<form action="/product/delete/<%= product.id%>" method="POST" class="product-detail-description">
+					<button type="submit">Delete</button>
+				</form>
+			<% } %> 
 			
 		</div>
 		<div>

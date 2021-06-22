@@ -120,13 +120,27 @@ const productController = {
                 })
                 .catch( e => {console.log(e)})
 
-
-
         })
         .catch( e => {console.log(e)})    
  
      },
 
+     deleteProduct: function(req, res){
+        let productoABorrar = req.params.id;
+        // return res.send(productoABorrar)
+        
+        db.Product.destroy({
+            where: [
+                {id : productoABorrar}
+            ]
+        })
+            .then( () => {
+                return res.redirect('/');
+            })
+            .catch( error => { 
+                console.log(error);
+            })
+    },
 
     addComment:function(req,res){
         let data = req.body;
