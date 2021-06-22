@@ -1,5 +1,4 @@
 const productos = require('../data/datos');
-
 const { Sequelize } = require('../database/models');
 const db = require('../database/models') // Requerimos la conexion a la base de datos y todos los modelos.
 const op = db.Sequelize.Op
@@ -11,14 +10,14 @@ const productController = {
 
         db.Product.findByPk(req.params.id,{
             include: [  
-            // relación comentario producto.
-            { association:'coments',
-              include:{ association: 'user'}
-            },
-           // relación producto usuario                                
-            { association: 'user' }],
-            order: [['coments','id','DESC']]
-     })
+            // Relación comentario producto.
+                { association:'coments',
+                include:{ association: 'user'}
+                },
+           // Relación producto usuario                                
+                { association: 'user' }],
+                order: [['coments','id','DESC']]
+        })
 
             .then(data =>{
                 return res.render('product', {product:data})
@@ -26,17 +25,17 @@ const productController = {
             .catch(error =>{
                 console.log(error);
             })
-
     },
 
     create: function(req,res){
+
         db.Product.findAll()
-        .then(data =>{
-            return res.render('product-add', {product:data})
-        })
-        .catch(error =>{
-            console.log(error);
-        })
+            .then(data =>{
+                return res.render('product-add', {product:data})
+            })
+            .catch(error =>{
+                console.log(error);
+            })
     },
 
     store: function(req,res){
@@ -67,8 +66,7 @@ const productController = {
                 })
                 .catch(error => {
                     console.log(error);
-                })
-
+            })
         }
     },
 
@@ -76,7 +74,7 @@ const productController = {
          
         let productId = req.params.id;
         
-        // Revisar esto
+        // Revisar esto - Creo que ya esta
         //Recuperar los datos  y pasarlo al form de edición
         db.Product.findByPk(productId)            
             .then( function(product){
@@ -85,16 +83,20 @@ const productController = {
                 } 
                 return res.render('product-edit', { editProduct: product})
             })
-            .catch( e => {console.log(e)}) 
+            .catch( e => {console.log(e)
+        }) 
     },
-
+    
     updateProduct:  function(req, res){
+        
         let id = req.params.id;
+        
         db.Product.findByPk(id)
-        .then( function(product){
+
+            .then( function(product){
 
             let data = req.body;
-        //Vamos a a actualizar un producto
+            //Vamos a a actualizar un producto
             let productToUpdate = { 
                 id: req.params.id,
                 userId: req.session.user.id,
@@ -102,30 +104,33 @@ const productController = {
                 img: req.file.filename, //Todo: Elegir si es la del formulario o la del producto original.
                 description: data.description,
             }
-        // revisar el if
+
+            // revisar el if
             if(req.file == undefined){
-                productToUpdate.img = req.session.product.img;
+                 productToUpdate.img = req.session.product.img;
             } else {
                 productToUpdate.img = req.file.filename;
             } 
+                
             db.Product.update(productToUpdate, {
                 where:{
                     id: req.params.id
                 }
-            })
-                .then(function(){
-                    //Actualizar los datos del producto y redirecciona al detalle
-                    let id = req.params.id;
-                    return res.redirect(`/product/id/${id}`);    
                 })
-                .catch( e => {console.log(e)})
+                    .then(function(){
+                        //Actualizar los datos del producto y redirecciona al detalle
+                        let id = req.params.id;
+                        return res.redirect(`/product/id/${id}`);    
+                    })
+                    .catch( e => {console.log(e)})
+            })
+            
+            .catch( e => {console.log(e)
+        })    
+    },
 
-        })
-        .catch( e => {console.log(e)})    
- 
-     },
+    deleteProduct: function(req, res){
 
-     deleteProduct: function(req, res){
         let productoABorrar = req.params.id;
         // return res.send(productoABorrar)
         
@@ -160,7 +165,6 @@ const productController = {
         .catch(function(error){
             console.log(error)
         })
-       
     },
     
 

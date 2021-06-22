@@ -22,6 +22,7 @@ const usersController = {
         .catch( e => console.log(e))
         
     },
+
     editUser: function(req,res){
         let userId = req.params.id; 
         
@@ -36,17 +37,18 @@ const usersController = {
                 .catch( e => {console.log(e)}) 
         }
     },
+
     update:  function(req, res){
        let data = req.body;
         //Vamoa a actualizar un usuario
         let user ={
-                username: data.username,
-                email: data.email,
-                userimg: '',
-                phoneNumber: data.phoneNumber,
-                dateOfBirth: data.dateOfBirth,
-                password: '',
-            }
+            username: data.username,
+            email: data.email,
+            userimg: '',
+            phoneNumber: data.phoneNumber,
+            dateOfBirth: data.dateOfBirth,
+            password: '',
+        }
 
         //Tenemos que pensar como completar password y la imagen.
         if(req.body.password == ''){
@@ -73,9 +75,6 @@ const usersController = {
                 
             })
             .catch( e => {console.log(e)})
-
-
-
     }
 };
 

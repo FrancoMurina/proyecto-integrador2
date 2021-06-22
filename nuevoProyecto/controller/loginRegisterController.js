@@ -8,22 +8,24 @@ const users = db.User;
 
 const loginRegisterController = {
 
-    // Esto es login
+    // Login
     index:function(req,res){
-    // Control de acceso
-    if (req.session.user != undefined){
-        return res.redirect('/')
-    }else{
-    //Mostramos el form de login
-    return res.render('login.ejs',{
-        title: "Login",
+        // Control de acceso
+        if (req.session.user != undefined){
+            return res.redirect('/')
+        } else{
+        //Mostramos el form de login
+        return res.render('login.ejs',{
+            title: "Login",
         })
-    }
+        }
     },
+
     login:function(req,res){
         db.User.findOne({
             where:[{email:req.body.email}]
         })
+        
         .then(function(user){
         let errors ={};
         // 1 Esta ese email en la base de datos?
@@ -56,18 +58,19 @@ const loginRegisterController = {
         })
     },
 
-    // Esto es registro
+    // Registro
     register:function(req,res){
-    // Contorl de acceso
-    if(req.session.user != undefined){
-        return res.redirect('/')
-    }else{
-    // Mostramos el form
-        return res.render('register.ejs',{
-            title: "Register",
-        })
-    }
+        // Contorl de acceso
+        if(req.session.user != undefined){
+            return res.redirect('/')
+        }else{
+            // Mostramos el form
+            return res.render('register.ejs',{
+                title: "Register",
+            })
+        }
     },
+
     store: function(req,res){
         let data = req.body;
         let errors = {}
@@ -110,43 +113,41 @@ const loginRegisterController = {
             return res.render('register')
         }
         else{//Una vez que tenemos la informacion completa entonces podemos pasar a chequear con base de datos
-        db.User.findOne({
+            db.User.findOne({
             where:[{email:req.body.email}]
         })
+        
         .then(function(user){
-        if(user != null){
-        errors.message = "el email ya esta registrado por favor elija otro.";
-        res.locals.errors = errors;
-        return res.render('register')  
-        }else{
-            let user = {
-                username: data.username,
-                email: data.email,
-                userimg: req.file.filename,
-                phoneNumber: data.phoneNumber,
-                dateOfBirth: data.dateOfBirth,
-                password: bcrypt.hashSync(data.password, 10),
+            if(user != null){
+                errors.message = "el email ya esta registrado por favor elija otro.";
+                res.locals.errors = errors;
+                return res.render('register')  
+            }else{
+                let user = {
+                    username: data.username,
+                    email: data.email,
+                    userimg: req.file.filename,
+                    phoneNumber: data.phoneNumber,
+                    dateOfBirth: data.dateOfBirth,
+                    password: bcrypt.hashSync(data.password, 10),
+                }
+                db.User.create(user)
+                .then(function(user){
+                    return res.redirect('/account/login');
+                })
             }
-            db.User.create(user)
-            .then(function(user){
-                return res.redirect('/account/login');
-            })
-        }
-    })
+        })
     
     }   
     },
 
-
-    
     logout: function(req,res){
         //Destruir la sesion
         req.session.destroy();
         //Destruir la cookie
         res.clearCookie('userId');
         //Redireccionar a home
-    return res.redirect('/')
-    
+        return res.redirect('/')
     },
 
 };
