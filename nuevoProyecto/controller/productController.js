@@ -101,13 +101,13 @@ const productController = {
                 id: req.params.id,
                 userId: req.session.user.id,
                 productName: data.productName,
-                img: req.file.filename, //Todo: Elegir si es la del formulario o la del producto original.
+                img: '', 
                 description: data.description,
             }
 
-            // revisar el if
+        
             if(req.file == undefined){
-                 productToUpdate.img = req.session.product.img;
+                 productToUpdate.img = product.img;
             } else {
                 productToUpdate.img = req.file.filename;
             } 
@@ -149,7 +149,7 @@ const productController = {
 
     addComment:function(req,res){
         let data = req.body;
-
+//Aca va el if
         let comentario = {
             productId: req.params.id ,
             userId:req.session.user.id,

@@ -28,24 +28,6 @@ const indexController = {
           console.log(error);
       })
     },
-
-    indexMasComentados:function(req, res) {
-      let id = req.params.id;
-      
-      db.Product.findAll({
-        order:[
-          ['La cantidad de comentarios','DESC']
-        ]
-      })
-
-      .then(function(data){
-          return res.render('index', {title: 'Express', listaProducts: data});    
-      })
-      .catch(function(error){
-         console.log(error);
-        })
-    },
-
 };
 
 

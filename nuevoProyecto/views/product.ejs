@@ -17,13 +17,6 @@
 				<p class="product-detail-description">
 					<a href="/product/editproduct/<%= product.id%>">Edit</a>
 				</p>
-			<% } %> 
-			<% if(locals.user && locals.user.id == product.user.id){ %> 
-				
-				<!-- <p class="product-detail-description">
-					
-				</p> -->
-
 				<form action="/product/delete/<%= product.id%>" method="POST" class="product-detail-description">
 					<button type="submit">Delete</button>
 					
@@ -62,7 +55,13 @@
 						<button type="submit" class="buy-now-button">ADD COMMENT</button>
 					</form>
 					<hr>
-					<% } %> 
+					<% }else{ %> 
+					<form class="form" action="/account/login" method="GET">
+						<input name="textoComentario" class="form-input" type="text" value="" placeholder="Agregar comentario">
+						<button type="submit" class="buy-now-button">ADD COMMENT</button>
+					</form>
+					<hr>
+					<%}%> 
 				
 				</div>
 			</div>

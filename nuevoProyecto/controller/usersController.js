@@ -14,10 +14,14 @@ const usersController = {
         db.User.findByPk(req.params.id,  {
             include:[{
                 association:'product'
-            }]
+            },{
+                association:'coment'
+            }
+        ]
          })
         .then((user) => {
-            return res.render('profile', {user: user, title: "profile"})
+            // return res.send(user)
+            return res.render('profile', {profile: user, title: "profile"})
         })
         .catch( e => console.log(e))
         

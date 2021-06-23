@@ -31,8 +31,8 @@
 						</figure>
 						<article class="product-box_data">
 							<h2><%=listaProducts[i].productName%></h2>
-							<p><%=listaProducts[i].descripcion%></p>
-							<!-- <p>Comments: <%=listaProducts[i].comentarios%></p> -->
+							<p><%=listaProducts[i].description%></p>
+							 <!-- <p>Comments: <%=listaProducts[i].comentarios%></p> -->
 							<p>From: <%=listaProducts[i].user.username%></p>
 						</article>
 					</a>
@@ -42,35 +42,6 @@
 
 		</div>
 	</div>
-
-	<!-- Más comentados -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Most commented</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<% for (let i=0; i<listaProducts.length; i++){%>
-				<div class="col-12 col-sm-6 col-lg-3">
-					<section class="product-box">
-						<a href="/product/id/<%=listaProducts[i].id%>">
-							<figure class="product-box_image">
-								<img src="<%=listaProducts[i].img%>" alt="">
-							</figure>
-							<article class="product-box_data">
-								<h2><%=listaProducts[i].productName%></h2>
-								<p><%=listaProducts[i].descripcion%></p>
-								<!-- <p>Comments: <%=listaProducts[i].comentarios%></p> -->
-								<p>From: <%=listaProducts[i].username%></p>
-							</article>
-						</a>
-					</section>
-				</div>
-				<%}%>
-		</div>
-	</div>
-
-
 	<%- include('./partials/footer.ejs') %>
 	<!-- /footer -->
 </body>	
