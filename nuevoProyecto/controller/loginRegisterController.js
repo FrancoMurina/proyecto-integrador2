@@ -21,12 +21,12 @@ const loginRegisterController = {
     },
 
     login:function(req,res){
+        //Buscar el usuario que se quiere loguear
         db.User.findOne({
             where:[{email:req.body.email}]
-        })
-        
+        })     
         .then(function(user){
-        let errors ={};
+        let errors = {};
         // 1 Esta ese email en la base de datos?
         if(user == null){
             //Crear un mensaje de error
@@ -45,11 +45,13 @@ const loginRegisterController = {
         }else{
             req.session.user = user;
 
+            //return res.send(req.body)
             // Si tildo recordame => creamos las cookies
-
-        if(req.body.rememberme != undefined){
-            res.cookie('userId', user.id, { maxAge: 100 * 60 * 5})
-        }
+            if(req.body.rememberme != undefined){
+                res.cookie('userId', user.id, { maxAge: 1000 * 60 * 5}); //29 horas
+                
+            }    
+        // console.log(user.id)
         return res.redirect('/');
         }})
         .catch(function(error){

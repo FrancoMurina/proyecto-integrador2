@@ -77,9 +77,11 @@ const productController = {
         //Recuperar los datos  y pasarlo al form de edición
         db.Product.findByPk(productId)            
             .then( function(product){
-                if(product.userId != req.session.user.id){
+                if(req.session.user != undefined && product.userId != req.session.user.id){
                     return res.redirect(`/users/${req.session.user.id}`)
-                } 
+                }else if(req.session.user == undefined){
+                    return res.redirect('/account/login')
+                }
                 return res.render('product-edit', { editProduct: product})
             })
             .catch( e => {console.log(e)

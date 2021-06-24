@@ -27,9 +27,11 @@ const usersController = {
     editUser: function(req,res){
         let userId = req.params.id; 
         
-        if(userId != req.session.user.id){
+        if(req.session.user != undefined && userId != req.session.user.id){
             return res.redirect(`/users/edit/${req.session.user.id}`)
-        } else {
+        }else if(req.session.user == undefined){
+            return res.redirect('/account/login')
+        }else{
             //Recuperar los datos del usuario y pasarlo al form de edición
             db.User.findByPk(userId)
                 .then( function(user){

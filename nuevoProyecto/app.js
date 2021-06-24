@@ -37,26 +37,31 @@ app.use(function(req,res,next){
   if(req.session.user != undefined){
     res.locals.user = req.session.user;
     // return res.send(res.locals.user)
-    return next();
-  }
+    // return next();
+   }
+  //else{
+  //   res.locals.user = null;
+  //   return next();
+  // }
   
   return next();
  
 });
-
+// && req.session.user == undefined
 //Gestionar la cookie
 app.use(function(req,res,next){
-  if(req.cookies.userId != undefined && req.session.user == undefined){
+  if(req.cookies.userId != undefined){
   let idDeLaCookie = req.cookies.userId
   db.User.findByPk(idDeLaCookie)
     .then(function(user){
       req.session.user = user;
+      req.locals = user;
       return next()
   })
   .catch(function(error){
     console.log(error)
   })
-  } else{ 
+  }else{ 
     return next();
   }
 });
