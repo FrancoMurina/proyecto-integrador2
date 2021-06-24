@@ -1,4 +1,4 @@
-const productos = require('../data/datos');
+
 
 const bcrypt = require('bcryptjs');
 const { Sequelize } = require('../database/models');
@@ -7,7 +7,6 @@ const op = db.Sequelize.Op;
 const users = db.User;
 
 const loginRegisterController = {
-
     // Login
     index:function(req,res){
         // Control de acceso

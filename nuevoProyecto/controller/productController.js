@@ -1,11 +1,10 @@
-const productos = require('../data/datos');
+
 const { Sequelize } = require('../database/models');
 const db = require('../database/models') // Requerimos la conexion a la base de datos y todos los modelos.
 const op = db.Sequelize.Op
 
 
 const productController = {
-
     detalleDeLosProductos: function(req,res){
 
         db.Product.findByPk(req.params.id,{
@@ -167,7 +166,6 @@ const productController = {
         })
     },
     
-
 };
 
 
