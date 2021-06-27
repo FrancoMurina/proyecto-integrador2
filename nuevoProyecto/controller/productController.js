@@ -19,6 +19,9 @@ const productController = {
         })
 
             .then(data =>{
+                if(!data){
+                    res.redirect('/')
+                }
                 return res.render('product', {product:data})
             })
             .catch(error =>{
@@ -80,6 +83,9 @@ const productController = {
         //Recuperar los datos  y pasarlo al form de edición
         db.Product.findByPk(productId)            
             .then( function(product){
+                if(!product){
+                    res.redirect('/')
+                }
                 if(req.session.user != undefined && product.userId != req.session.user.id){
                     return res.redirect(`/users/${req.session.user.id}`)
                 }else if(req.session.user == undefined){

@@ -17,6 +17,9 @@ const usersController = {
         ]
          })
         .then((user) => {
+            if(!user){
+                res.redirect('/')
+            }
             // return res.send(user)
             return res.render('profile', {profile: user, title: "profile"})
         })
