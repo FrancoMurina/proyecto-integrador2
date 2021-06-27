@@ -30,6 +30,9 @@ const productController = {
 
         db.Product.findAll()
             .then(data =>{
+                if (req.session.user == undefined){
+                return res.redirect('/account/login')
+                }
                 return res.render('product-add', {product:data})
             })
             .catch(error =>{
@@ -160,7 +163,6 @@ const productController = {
         db.Coment.create(comentario)
         .then(function(comentarioCreado){
             // Revisar el nuemro del Id en la ruta
-            
             return res.redirect(`/product/id/${req.params.id}`)
         })
         .catch(function(error){
