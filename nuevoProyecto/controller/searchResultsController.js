@@ -39,7 +39,6 @@ const searchResultsController ={
                 return res.render('search-results')
 
             } else {
-            
                 //return res.send (data);
                 return res.render('search-results',{listaProducts: data});
             }

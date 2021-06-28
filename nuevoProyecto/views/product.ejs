@@ -49,20 +49,13 @@
 						</article>
 					</section>
 					<%}%> 
-					<% if(locals.user){ %> 
+					
 					<form class="form" action="/product/comment/<%= product.id%>" method="POST">
 						<input name="textoComentario" class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">ADD COMMENT</button>
 					</form>
 					<hr>
-					<% }else{ %> 
-					<form class="form" action="/account/login" method="GET">
-						<input name="textoComentario" class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button">ADD COMMENT</button>
-					</form>
-					<hr>
-					<%}%> 
-				
+					
 				</div>
 			</div>
 		</div>

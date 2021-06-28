@@ -84,6 +84,14 @@ const loginRegisterController = {
             errors.message = "El email es obligatorio";
             res.locals.errors = errors;
             return res.render('register')
+        }else if(req.file == undefined){
+            errors.message = "Debe agregar una imagen";
+            res.locals.errors = errors;
+            return res.render('register')
+        }else if (req.file.mimetype !== 'image/png'&& req.file.mimetype !== 'image/jpg' && req.file.mimetype !== 'image/jpeg'){
+            errors.message = "La imagen debe ser png o jpg o jpeg";
+            res.locals.errors = errors;
+            return res.render('product-add')
         }else if(req.body.phoneNumber == ""){
             errors.message = "El numero telefonico es obligatorio";
             res.locals.errors = errors;
@@ -96,31 +104,26 @@ const loginRegisterController = {
             errors.message = "La contraseña es obligatoria";
             res.locals.errors = errors;
             return res.render('register')
-        }else if(req.body.checkpassword == ""){
-            errors.message = "Repetir la contraseña";
-            res.locals.errors = errors;
-            return res.render('register')
         }else if(req.body.password.length <= 3){
             errors.message = "La contraseña debe tener mas de tres caracteres";
+            res.locals.errors = errors;
+            return res.render('register')
+        }else if(req.body.checkpassword == ""){
+            errors.message = "Repetir la contraseña";
             res.locals.errors = errors;
             return res.render('register')
         }else if(req.body.checkpassword != req.body.password){
             errors.message = "La contraseña debe ser la misma";
             res.locals.errors = errors;
             return res.render('register')
-        }else if(req.file == undefined){
-            errors.message = "Debe agregar una imagen";
-            res.locals.errors = errors;
-            return res.render('register')
-        }
-        else{//Una vez que tenemos la informacion completa entonces podemos pasar a chequear con base de datos
+        }else{//Una vez que tenemos la informacion completa entonces podemos pasar a chequear con base de datos
             db.User.findOne({
             where:[{email:req.body.email}]
         })
         
         .then(function(user){
             if(user != null){
-                errors.message = "el email ya esta registrado por favor elija otro.";
+                errors.message = "el email ya esta registrado por favor elija otro";
                 res.locals.errors = errors;
                 return res.render('register')  
             }else{

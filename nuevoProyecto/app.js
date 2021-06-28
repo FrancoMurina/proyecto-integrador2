@@ -35,19 +35,13 @@ app.use(session({
 // Dejar disponible datos de session para todas las vistas
 app.use(function(req,res,next){
   if(req.session.user != undefined){
+    // Para compartir la informacion del usuario
     res.locals.user = req.session.user;
-    // return res.send(res.locals.user)
-    // return next();
    }
-  //else{
-  //   res.locals.user = null;
-  //   return next();
-  // }
-  
   return next();
  
 });
-// && req.session.user == undefined
+
 //Gestionar la cookie
 app.use(function(req,res,next){
   if(req.cookies.userId != undefined){

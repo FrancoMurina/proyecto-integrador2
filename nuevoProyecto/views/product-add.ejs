@@ -21,7 +21,9 @@
 			<div class="col-12">
 				<h2 class="products-t">Add products</h2>
 			</div>
-			
+			<% if(locals.errors){ %>
+				<h2 class="products-t" style="color:red"><%=locals.errors.message  %> </h2>			
+			<% } %>
 			<!-- Show the "ultimos" products -->
 		
 	<!-- Formulario -->

@@ -46,16 +46,20 @@ const productController = {
     store: function(req,res){
         
         let data = req.body;
-
+        let errors = {};
         if(req.body.productName == ""){
-            errors.message = "Debe estar completo";
+            errors.message = "El nombre debe estar completo";
             res.locals.errors = errors;
-            return res.render('/product/add')
-        } else if (req.file.mimetype !== 'image/png'&& req.file.mimetype !== 'image/jpg' && req.file.mimetype !== 'image/jpeg'){
-            errors.message = "El archivo debe ser png o jpg o jpeg";
+            return res.render('product-add')
+        }else if(req.file == undefined){
+            errors.message = "La imagen del producto es obligatoria";
             res.locals.errors = errors;
-            return res.render('/product/add')
-        } else { 
+            return res.render('product-add')
+        }else if (req.file.mimetype !== 'image/png'&& req.file.mimetype !== 'image/jpg' && req.file.mimetype !== 'image/jpeg'){
+            errors.message = "La imagen debe ser png o jpg o jpeg";
+            res.locals.errors = errors;
+            return res.render('product-add')
+        }else { 
 
             let products = {
                 userId: req.session.user.id,
@@ -83,10 +87,10 @@ const productController = {
         //Recuperar los datos  y pasarlo al form de edición
         db.Product.findByPk(productId)            
             .then( function(product){
-                if(!product){
-                    res.redirect('/')
+                if(!product && req.session.user != undefined){
+                    res.redirect(`/users/${req.session.user.id}`)
                 }
-                if(req.session.user != undefined && product.userId != req.session.user.id){
+                else if(req.session.user != undefined && product.userId != req.session.user.id){
                     return res.redirect(`/users/${req.session.user.id}`)
                 }else if(req.session.user == undefined){
                     return res.redirect('/account/login')
@@ -159,7 +163,12 @@ const productController = {
 
     addComment:function(req,res){
         let data = req.body;
-//Aca va el if
+        let errors = {};
+        if(req.session.user == undefined){
+        errors.message = "Para comentar debe estar logueado";
+        res.locals.errors = errors;
+        return res.render('login') 
+     }
         let comentario = {
             productId: req.params.id ,
             userId:req.session.user.id,
@@ -168,7 +177,6 @@ const productController = {
 
         db.Coment.create(comentario)
         .then(function(comentarioCreado){
-            // Revisar el nuemro del Id en la ruta
             return res.redirect(`/product/id/${req.params.id}`)
         })
         .catch(function(error){
